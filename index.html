@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>พระไตรปิฎก 200 ภาษา - ศิษย์พี่</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/4.1.5/css/flag-icons.min.css">
+<style>
+        body { 
+            background-color: #f0f2f5; 
+            font-family: 'Tahoma', sans-serif; 
+            padding: 30px; 
+            line-height: 1.8; 
+            color: #333;
+        }
+        
+        /* สไตล์หลักของ Card: เพิ่มมิติ ความโค้งนูน และเงา */
+        .card { 
+            border: none; /* เอาขอบเดิมออก */
+            border-radius: 25px; /* เพิ่มความโค้งมนให้ดูนุ่มนวลขึ้น */
+            padding: 40px; 
+            max-width: 900px; /* ขยายให้กว้างขึ้นเล็กน้อยเพื่อความสบายตา */
+            margin: 40px auto; 
+            background: #ffffff; /* ใช้สีขาวบริสุทธิ์ */
+            
+            /* การเล่นเงาหลายชั้น (Box Shadow) เพื่อสร้างมิติและความลึก */
+            box-shadow: 
+                0 15px 35px rgba(124, 77, 255, 0.1), /* เงานุ่มสีม่วงอ่อนชั้นนอกสุด */
+                0 5px 15px rgba(0, 0, 0, 0.05);  /* เงาบางๆ ชั้นในเพื่อเพิ่มความนูน */
+            
+            position: relative; /* สำหรับเอฟเฟกต์แสง */
+            overflow: hidden; /* ป้องกันแสงรั่วออกนอกกรอบ */
+        }
+        
+        /* เพิ่มเอฟเฟกต์แสงเงาที่ขอบด้านบน (Inner Shadow) เพื่อให้ดูนูนขึ้น (Neumorphism look) */
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 10px;
+            background: linear-gradient(180deg, rgba(124, 77, 255, 0.15) 0%, rgba(255, 255, 255, 0) 100%);
+            border-radius: 25px 25px 0 0;
+        }
+        
+        /* สไตล์ส่วนหัว: ตัวใหญ่ขึ้น เด่นขึ้น */
+        .header { 
+            font-weight: bold; 
+            margin-bottom: 25px; 
+            color: #512da8; 
+            text-align: center; 
+            font-size: 1.8rem; /* ขยายขนาด */
+            text-shadow: 1px 1px 2px rgba(81, 45, 168, 0.1); /* เพิ่มเงาที่ตัวอักษรเล็กน้อย */
+        }
+
+        /* ส่วนที่เพิ่มเข้ามาเพื่อปิดกล่องข้อความเด้งของ Google Translate (ยังคงอยู่) */
+        .goog-text-highlight {
+            background-color: transparent !important;
+            box-shadow: none !important;
+        }
+        .goog-tooltip {
+            display: none !important;
+        }
+        .goog-tooltip:hover {
+            display: none !important;
+        }
+        .goog-text-highlight:hover {
+            background-color: transparent !important;
+        }
+        
+        .control-group { text-align: center; margin-bottom: 30px; }
+        
+        /* สไตล์ Select: ให้มีความนูนและมิติ */
+        select { 
+            padding: 15px; 
+            border-radius: 12px; 
+            border: 2px solid #e1d4ff; 
+            width: 100%; 
+            max-width: 500px; 
+            font-size: 1rem; 
+            cursor: pointer; 
+            background: #ffffff;
+            color: #512da8;
+            box-shadow: inset 0 2px 4px rgba(124, 77, 255, 0.1); /* เงานูนด้านใน */
+            transition: 0.3s;
+        }
+        
+        select:focus {
+            outline: none;
+            border-color: #7c4dff;
+            box-shadow: 0 0 10px rgba(124, 77, 255, 0.2); /* เพิ่มแสงเรืองแสงเวลาเลือก */
+        }
+        
+        .btn-group { display: flex; justify-content: center; gap: 15px; margin-top: 20px; }
+        
+        /* สไตล์ปุ่มภาษาหลัก: เพิ่มมิติ ความนูน และเงาเวลา Mouse over */
+        .lang-btn-main { 
+            background: #ffffff; /* ใช้พื้นหลังสีขาว */
+            border: 2px solid #7c4dff; /* เปลี่ยนขอบเป็นสีม่วง */
+            padding: 12px 25px; 
+            border-radius: 50px; 
+            cursor: pointer; 
+            font-weight: bold; 
+            color: #512da8; /* ตัวอักษรสีม่วง */
+            transition: all 0.3s ease; 
+            display: flex; 
+            align-items: center; 
+            gap: 10px; 
+            font-size: 1rem;
+            box-shadow: 0 4px 6px rgba(124, 77, 255, 0.1); /* เงาบางๆ ด้านล่าง */
+        }
+        
+        /* เวลาเอาม้ามาจี้: เพิ่มความนูนและเปลี่ยนสี */
+        .lang-btn-main:hover { 
+            background: #7c4dff; 
+            color: white; 
+            transform: translateY(-2px); /* ลอยตัวขึ้นเล็กน้อย */
+            box-shadow: 0 6px 12px rgba(124, 77, 255, 0.3); /* ขยายเงา */
+        }
+        
+        .lang-btn-main:active {
+            transform: translateY(1px); /* ยุบตัวลงเล็กน้อยเวลาคลิก */
+            box-shadow: 0 2px 4px rgba(124, 77, 255, 0.2);
+        }
+        
+        /* ส่วนแสดงรายชื่อภาษา (ธง): ปรับความกว้างและเงา */
+        .flag-container { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); /* ขยายขนาดขั้นต่ำ */
+            gap: 12px; 
+            max-height: 280px; /* ขยายความสูง */
+            overflow-y: auto; 
+            padding: 20px; 
+            border: 2px solid #e1d4ff; 
+            border-radius: 18px; 
+            background: #fcfaff; 
+            margin-bottom: 25px; 
+            box-shadow: inset 0 2px 6px rgba(124, 77, 255, 0.08); /* เงานูนด้านใน */
+        }
+        
+        /* สไตล์ปุ่มธงภาษา: เพิ่มความนูนและเงามิติ */
+        .lang-btn { 
+            cursor: pointer; 
+            padding: 10px 15px; 
+            border: none; 
+            border-radius: 10px; 
+            background: white; 
+            font-size: 13px; 
+            display: flex; 
+            align-items: center; 
+            gap: 10px; 
+            transition: all 0.2s ease; 
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* เงามิติ */
+        }
+        
+        /* เวลา Mouse over ปุ่มธงภาษา: ลอยตัวและเปลี่ยนสี */
+        .lang-btn:hover { 
+            background: #ede7f6; 
+            transform: translateY(-1px); /* ลอยตัวเล็กน้อย */
+            box-shadow: 0 4px 8px rgba(124, 77, 255, 0.15); /* ขยายเงา */
+            color: #512da8;
+        }
+        
+        /* ส่วนแสดงเนื้อหาพระไตรปิฎก: ปรับระยะห่างและเงา */
+        #contentWrapper {
+            margin-top:25px; 
+            padding:30px; 
+            border: 2px solid #e1d4ff; 
+            border-radius:20px; 
+            background-color: #fbf9ff; 
+            box-shadow: inset 0 3px 8px rgba(124, 77, 255, 0.06); /* เงานูนด้านใน */
+        }
+        
+        #fileContent { 
+            white-space: pre-wrap; 
+            word-wrap: break-word; 
+            color: #333; 
+            font-size: 1.1rem; /* ขนาดตัวอักษรใหญ่ขึ้นเล็กน้อยเพื่อความสบายตา */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <div class="header">📚 เลือกเล่มพระไตรปิฎก</div>
+        <div class="control-group">
+            <select id="book-selector" onchange="loadSelectedBook()">
+                <option value="" disabled selected>-- เลือกเล่มที่ต้องการอ่าน --</option>
+            </select>
+            
+            <div class="btn-group">
+                <button class="lang-btn-main" onclick="translatePage('th')">
+                    <span class="flag-icon flag-icon-th"></span> ภาษาไทย
+                </button>
+                <button class="lang-btn-main" onclick="translatePage('en')">
+                    <span class="flag-icon flag-icon-us"></span> English
+                </button>
+            </div>
+        </div>
+
+        <div id="google_translate_element" style="display:none;"></div>
+        <div class="flag-container" id="flagContainer"></div>
+
+        <div style="margin-top:20px; padding:25px; border:1px solid #e1d4ff; border-radius:15px;">
+            <div id="fileContent">โปรดเลือกเล่มจากรายการด้านบนเพื่ออ่านเนื้อหา...</div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        const bookNames = [
+            "01 มหาวิภังค์ เล่ม ๑ ภาค ๑.txt", "02 มหาวิภังค์ เล่ม ๑ ภาค ๒.txt", "03 มหาวิภังค์ เล่ม ๑ ภาค ๓.txt", "04 มหาวิภังค์ เล่ม ๒.txt",
+            "05 ภิกขุนีวิภังค์ เล่ม ๓.txt", "06 มหาวรรค เล่ม ๔ ภาค ๑.txt", "07 มหาวรรค เล่ม ๕ ภาค ๒.txt", "08 จุลวรรค เล่ม ๖ ภาค ๑.txt",
+            "09 จุลวรรค เล่ม ๗ ภาค ๒.txt", "10 ปริวาร เล่ม ๘.txt", "11 ทีฆนิกาย สีลขันธวรรค เล่ม ๑ ภาค ๑.txt", "12 ทีฆนิกาย สีลขันธวรรค เล่ม ๑ ภาค ๒.txt",
+            "13 ทีฆนิกาย มหาวรรค เล่ม ๒ ภาค ๑.txt", "14 ทีฆนิกาย มหาวรรค เล่ม ๒ ภาค ๒.txt", "15 ทีฆนิกาย ปาฏิกวรรค เล่ม ๓ ภาค ๑.txt", "16 ทีฆนิกาย ปาฏิกวรรค เล่ม ๓ ภาค ๒.txt",
+            "17 มัชฌิมนิกาย มูลปัณณาสก์ เล่ม ๑ ภาค ๑.txt", "18 มัชฌิมนิกาย มูลปัณณาสก์ เล่ม ๑ ภาค ๒.txt", "19 มัชฌิมนิกาย มูลปัณณาสก์ เล่ม ๑ ภาค ๓.txt", "20 มัชฌิมนิกาย มัชฌิมปัณณาสก์ เล่ม ๒ ภาค ๑.txt",
+            "21 มัชฌิมนิกาย มัชฌิมปัณณาสก์ เล่ม ๒ ภาค ๒.txt", "22 มัชฌิมนิกาย อุปริปัณณาสก์ เล่ม ๓ ภาค ๑.txt", "23 มัชฌิมนิกาย อุปริปัณณาสก์ เล่ม ๓ ภาค ๒.txt", "24 สังยุตตนิกาย สคาถวรรค เล่ม ๑ ภาค ๑.txt",
+            "25 สังยุตตนิกาย สคาถวรรค เล่ม ๑ ภาค ๒.txt", "26 สังยุตตนิกาย นิทานวรรค เล่ม ๒.txt", "27 สังยุตตนิกาย นิทานวรรค เล่ม ๓.txt", "28 สังยุตตนิกาย สฬายตนวรรค เล่ม ๔ ภาค ๑.txt",
+            "29 สังยุตตนิกาย สฬายตนวรรค เล่ม ๔ ภาค ๒.txt", "30 สังยุตตนิกาย มหาวราวรรค เล่ม ๕ ภาค ๑.txt", "31 สังยุตตนิกาย มหาวราวรรค เล่ม ๕ ภาค ๒.txt", "32 อังคุตรนิกาย เอกนิบาต เล่ม ๑ ภาค ๑.txt",
+            "33 เอกนิบาต-ทุกนิบาต เล่ม ๑ ภาค ๒.txt", "34 อังคุตรนิกาย ติกนิบาต เล่ม ๑ ภาค ๓.txt", "35 อังคุตรนิกาย จตุกนิบาต เล่ม ๒.txt", "36 อังคุตรนิกาย ปัญจก-ฉักกนิบาต เล่ม ๓.txt",
+            "37 อังคุตรนิกาย สัตตก-อัฏฐก-นวกนิบาต เล่ม ๔.txt", "38 อังคุตรนิกาย ทสก-เอกาทสกนิบาต เล่ม ๕.txt", "39 ขุททกนิกาย ขุททกปาฐะ เล่ม ๑ ภาค ๑.txt", "40 ขุททกนิกาย คาถาธรรมบท เล่ม ๑ ภาค ๒ ตอน ๑.txt",
+            "41 ขุททกนิกาย คาถาธรรมบท เล่ม ๑ ภาค ๒ ตอน ๒.txt", "42 ขุททกนิกาย คาถาธรรมบท เล่ม ๑ ภาค ๒ ตอน ๓.txt", "43 ขุททกนิกาย คาถาธรรมบท เล่ม ๑ ภาค ๒ ตอน ๔.txt", "44 ขุททกนิกาย อุทาน เล่ม ๑ ภาค ๓.txt",
+            "45 ขุททกนิกาย อิติวุตตก เล่ม ๑ ภาค ๔.txt", "46 ขุททกนิกาย สุตตนิบาต เล่ม ๑ ภาค ๕.txt", "47 ขุททกนิกาย สุตตนิบาต เล่ม ๑ ภาค ๖.txt", "48 ขุททกนิกาย วิมานวัตถุ เล่ม ๒ ภาค ๑.txt",
+            "49 ขุททกนิกาย เปตวัตถุ เล่ม ๒ ภาค ๒.txt", "50 ขุททกนิกาย เถรคาถา เล่ม ๒ ภาค ๓ ตอน ๑.txt", "51 ขุททกนิกาย เถรคาถา เล่ม ๒ ภาค ๓ ตอน ๒.txt", "52 ขุททกนิกาย เถรคาถา เล่ม ๒ ภาค ๓ ตอน ๓.txt",
+            "53 ขุททกนิกาย เถรคาถา เล่ม ๒ ภาค ๓ ตอน ๔.txt", "54 ขุททกนิกาย เถรีคาถา เล่ม ๒ ภาค ๔.txt", "55 ขุททกนิกาย ชาดก เล่ม ๓ ภาค ๑.txt", "56 ขุททกนิกาย เอกนิบาตชาดก เล่ม ๓ ภาค ๒.txt",
+            "57 ขุททกนิกาย ทุกนิบาตชาดก เล่ม ๓ ภาค ๓.txt", "58 ขุททกนิกาย ชาดก เล่ม ๓ ภาค ๔.txt", "59 ขุททกนิกาย ชาดก เล่ม ๓ ภาค ๕.txt", "60 ขุททกนิกาย ชาดก เล่ม ๓ ภาค ๖.txt",
+            "61 ขุททกนิกาย ชาดก เล่ม ๓ ภาค ๗.txt", "62 ขุททกนิกาย ชาดก เล่ม ๔ ภาค ๑.txt", "63 ขุททกนิกาย ชาดก เล่ม ๔ ภาค ๒.txt", "64 ขุททกนิกาย ชาดก เล่ม ๔ ภาค ๓.txt",
+            "65 ขุททกนิกาย มหานิทเทส เล่ม ๕ ภาค ๑.txt", "66 ขุททกนิกาย มหานิทเทส เล่ม ๕ ภาค ๒.txt", "67 ขุททกนิกาย จูฬนิเทส เล่ม ๖.txt", "68 ขุททกนิกาย ปฏิสัมภิทามรรค เล่ม ๗ ภาค ๑.txt",
+            "69 ขุททกนิกาย ปฏิสัมภิทามรรค เล่ม ๗ ภาค ๒.txt", "70 ขุททกนิกาย อปทาน เล่ม ๘ ภาค ๑.txt", "71 ขุททกนิกาย อปทาน เล่ม ๘ ภาค ๒.txt", "72 ขุททกนิกาย อปทาน เล่ม ๙ ภาค ๑.txt",
+            "73 ขุททกนิกาย พุทธวงศ์ เล่ม ๙ ภาค ๒.txt", "74 ขุททกนิกาย จริยาปิฎก เล่ม ๙ ภาค ๓.txt", "75 ธรรมสังคณี เล่ม ๑ ภาค ๑.txt", "76 ธรรมสังคณี เล่ม ๑ ภาค ๒.txt",
+            "77 วิภังค์ เล่ม ๒ ภาค ๑.txt", "78 วิภังค์ เล่ม ๒ ภาค ๒.txt", "79 ธาตุกถา-บุคคลบัญญัติ เล่ม ๓.txt", "80 กถาวัตถุ เล่ม ๔ ภาค ๑.txt",
+            "81 กถาวัตถุ เล่ม ๔ ภาค ๒.txt", "82 ยมก เล่ม ๕ ภาค ๑ ตอน ๑.txt", "83 ยมก เล่ม ๕ ภาค ๑ ตอน ๒.txt", "84 ยมก เล่ม ๖ ภาค ๒.txt",
+            "85 ปัฏฐาน เล่ม ๗ ภาค ๑.txt", "86 ปัฏฐาน เล่ม ๗ ภาค ๒.txt", "87 ปัฏฐาน เล่ม ๗ ภาค ๓.txt", "88 ปัฏฐาน เล่ม ๗ ภาค ๔.txt",
+            "89 ปัฏฐาน เล่ม ๗ ภาค ๕.txt", "90 ปัฏฐาน เล่ม ๗ ภาค ๖.txt", "91 ปัฏฐาน เล่ม ๗ ภาค ๗.txt"
+        ];
+
+        const selector = document.getElementById('book-selector');
+        bookNames.forEach((name) => {
+            let option = document.createElement('option');
+            option.value = name; 
+            option.text = name.replace(".txt", ""); 
+            selector.appendChild(option);
+        });
+
+        function loadSelectedBook() {
+            const fileName = selector.value;
+            const contentDiv = document.getElementById('fileContent');
+            contentDiv.innerText = "กำลังโหลดข้อมูล...";
+            fetch(fileName)
+                .then(res => res.ok ? res.text() : Promise.reject())
+                .then(data => { contentDiv.innerText = data; })
+                .catch(() => { contentDiv.innerText = "ไม่พบไฟล์ " + fileName + " ในระบบ โปรดตรวจสอบว่าไฟล์อยู่ในโฟลเดอร์เดียวกับ index.html และชื่อไฟล์ตรงกันทุกตัวอักษรครับ"; });
+        }
+
+        function translatePage(lang) {
+            var selectField = document.querySelector("select.goog-te-combo");
+            if (selectField) { selectField.value = lang; selectField.dispatchEvent(new Event('change')); }
+        }
+
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({pageLanguage: 'th', autoDisplay: false}, 'google_translate_element');
+            setTimeout(() => {
+                const select = document.querySelector("select.goog-te-combo");
+                const container = document.getElementById('flagContainer');
+                if(!select) return;
+                const options = Array.from(select.options).slice(1);
+                options.forEach(option => {
+                    if (option.value === 'th' || option.value === 'en') return;
+                    let flagCode = option.value.split('-').pop().toLowerCase();
+                    if (flagCode === 'zh') flagCode = 'cn';
+                    const btn = document.createElement('button');
+                    btn.className = 'lang-btn';
+                    btn.innerHTML = `<span class="flag-icon flag-icon-${flagCode}"></span> ${option.text}`;
+                    btn.onclick = () => translatePage(option.value);
+                    container.appendChild(btn);
+                });
+            }, 1000);
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    
+    
+</body>
+</html>
