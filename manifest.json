@@ -1,0 +1,14 @@
+{
+  "name": "พระไตรปิฎก 200 ภาษา",
+  "short_name": "Tripitaka",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "icons": [
+    {
+      "src": "buddha_1303597.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

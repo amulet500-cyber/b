@@ -4,8 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>พระไตรปิฎก 200 ภาษา - ศิษย์พี่</title>
+    
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="buddha_1303597.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="พระไตรปิฎก">
+    <meta name="theme-color" content="#512da8">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/4.1.5/css/flag-icons.min.css">
-<style>
+    
+    <style>
         body { 
             background-color: #f0f2f5; 
             font-family: 'Tahoma', sans-serif; 
@@ -16,23 +25,19 @@
         
         /* สไตล์หลักของ Card: เพิ่มมิติ ความโค้งนูน และเงา */
         .card { 
-            border: none; /* เอาขอบเดิมออก */
-            border-radius: 25px; /* เพิ่มความโค้งมนให้ดูนุ่มนวลขึ้น */
+            border: none; 
+            border-radius: 25px; 
             padding: 40px; 
-            max-width: 900px; /* ขยายให้กว้างขึ้นเล็กน้อยเพื่อความสบายตา */
+            max-width: 900px; 
             margin: 40px auto; 
-            background: #ffffff; /* ใช้สีขาวบริสุทธิ์ */
-            
-            /* การเล่นเงาหลายชั้น (Box Shadow) เพื่อสร้างมิติและความลึก */
+            background: #ffffff; 
             box-shadow: 
-                0 15px 35px rgba(124, 77, 255, 0.1), /* เงานุ่มสีม่วงอ่อนชั้นนอกสุด */
-                0 5px 15px rgba(0, 0, 0, 0.05);  /* เงาบางๆ ชั้นในเพื่อเพิ่มความนูน */
-            
-            position: relative; /* สำหรับเอฟเฟกต์แสง */
-            overflow: hidden; /* ป้องกันแสงรั่วออกนอกกรอบ */
+                0 15px 35px rgba(124, 77, 255, 0.1), 
+                0 5px 15px rgba(0, 0, 0, 0.05); 
+            position: relative; 
+            overflow: hidden; 
         }
         
-        /* เพิ่มเอฟเฟกต์แสงเงาที่ขอบด้านบน (Inner Shadow) เพื่อให้ดูนูนขึ้น (Neumorphism look) */
         .card::before {
             content: '';
             position: absolute;
@@ -44,34 +49,23 @@
             border-radius: 25px 25px 0 0;
         }
         
-        /* สไตล์ส่วนหัว: ตัวใหญ่ขึ้น เด่นขึ้น */
+        /* สไตล์ส่วนหัว */
         .header { 
             font-weight: bold; 
             margin-bottom: 25px; 
             color: #512da8; 
             text-align: center; 
-            font-size: 1.8rem; /* ขยายขนาด */
-            text-shadow: 1px 1px 2px rgba(81, 45, 168, 0.1); /* เพิ่มเงาที่ตัวอักษรเล็กน้อย */
+            font-size: 1.8rem; 
+            text-shadow: 1px 1px 2px rgba(81, 45, 168, 0.1); 
         }
 
-        /* ส่วนที่เพิ่มเข้ามาเพื่อปิดกล่องข้อความเด้งของ Google Translate (ยังคงอยู่) */
-        .goog-text-highlight {
-            background-color: transparent !important;
-            box-shadow: none !important;
-        }
-        .goog-tooltip {
-            display: none !important;
-        }
-        .goog-tooltip:hover {
-            display: none !important;
-        }
-        .goog-text-highlight:hover {
-            background-color: transparent !important;
-        }
+        /* ป้องกัน Google Translate Tooltip กวนใจ */
+        .goog-text-highlight { background-color: transparent !important; box-shadow: none !important; }
+        .goog-tooltip, .goog-tooltip:hover { display: none !important; }
+        .goog-text-highlight:hover { background-color: transparent !important; }
         
         .control-group { text-align: center; margin-bottom: 30px; }
         
-        /* สไตล์ Select: ให้มีความนูนและมิติ */
         select { 
             padding: 15px; 
             border-radius: 12px; 
@@ -82,64 +76,51 @@
             cursor: pointer; 
             background: #ffffff;
             color: #512da8;
-            box-shadow: inset 0 2px 4px rgba(124, 77, 255, 0.1); /* เงานูนด้านใน */
+            box-shadow: inset 0 2px 4px rgba(124, 77, 255, 0.1); 
             transition: 0.3s;
         }
         
-        select:focus {
-            outline: none;
-            border-color: #7c4dff;
-            box-shadow: 0 0 10px rgba(124, 77, 255, 0.2); /* เพิ่มแสงเรืองแสงเวลาเลือก */
-        }
+        select:focus { outline: none; border-color: #7c4dff; box-shadow: 0 0 10px rgba(124, 77, 255, 0.2); }
         
         .btn-group { display: flex; justify-content: center; gap: 15px; margin-top: 20px; }
         
-        /* สไตล์ปุ่มภาษาหลัก: เพิ่มมิติ ความนูน และเงาเวลา Mouse over */
         .lang-btn-main { 
-            background: #ffffff; /* ใช้พื้นหลังสีขาว */
-            border: 2px solid #7c4dff; /* เปลี่ยนขอบเป็นสีม่วง */
+            background: #ffffff; 
+            border: 2px solid #7c4dff; 
             padding: 12px 25px; 
             border-radius: 50px; 
             cursor: pointer; 
             font-weight: bold; 
-            color: #512da8; /* ตัวอักษรสีม่วง */
+            color: #512da8; 
             transition: all 0.3s ease; 
             display: flex; 
             align-items: center; 
             gap: 10px; 
             font-size: 1rem;
-            box-shadow: 0 4px 6px rgba(124, 77, 255, 0.1); /* เงาบางๆ ด้านล่าง */
+            box-shadow: 0 4px 6px rgba(124, 77, 255, 0.1); 
         }
         
-        /* เวลาเอาม้ามาจี้: เพิ่มความนูนและเปลี่ยนสี */
         .lang-btn-main:hover { 
             background: #7c4dff; 
             color: white; 
-            transform: translateY(-2px); /* ลอยตัวขึ้นเล็กน้อย */
-            box-shadow: 0 6px 12px rgba(124, 77, 255, 0.3); /* ขยายเงา */
+            transform: translateY(-2px); 
+            box-shadow: 0 6px 12px rgba(124, 77, 255, 0.3); 
         }
         
-        .lang-btn-main:active {
-            transform: translateY(1px); /* ยุบตัวลงเล็กน้อยเวลาคลิก */
-            box-shadow: 0 2px 4px rgba(124, 77, 255, 0.2);
-        }
-        
-        /* ส่วนแสดงรายชื่อภาษา (ธง): ปรับความกว้างและเงา */
         .flag-container { 
             display: grid; 
-            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); /* ขยายขนาดขั้นต่ำ */
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); 
             gap: 12px; 
-            max-height: 280px; /* ขยายความสูง */
+            max-height: 280px; 
             overflow-y: auto; 
             padding: 20px; 
             border: 2px solid #e1d4ff; 
             border-radius: 18px; 
             background: #fcfaff; 
             margin-bottom: 25px; 
-            box-shadow: inset 0 2px 6px rgba(124, 77, 255, 0.08); /* เงานูนด้านใน */
+            box-shadow: inset 0 2px 6px rgba(124, 77, 255, 0.08); 
         }
         
-        /* สไตล์ปุ่มธงภาษา: เพิ่มความนูนและเงามิติ */
         .lang-btn { 
             cursor: pointer; 
             padding: 10px 15px; 
@@ -151,32 +132,21 @@
             align-items: center; 
             gap: 10px; 
             transition: all 0.2s ease; 
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* เงามิติ */
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05); 
         }
         
-        /* เวลา Mouse over ปุ่มธงภาษา: ลอยตัวและเปลี่ยนสี */
         .lang-btn:hover { 
             background: #ede7f6; 
-            transform: translateY(-1px); /* ลอยตัวเล็กน้อย */
-            box-shadow: 0 4px 8px rgba(124, 77, 255, 0.15); /* ขยายเงา */
-            color: #512da8;
-        }
-        
-        /* ส่วนแสดงเนื้อหาพระไตรปิฎก: ปรับระยะห่างและเงา */
-        #contentWrapper {
-            margin-top:25px; 
-            padding:30px; 
-            border: 2px solid #e1d4ff; 
-            border-radius:20px; 
-            background-color: #fbf9ff; 
-            box-shadow: inset 0 3px 8px rgba(124, 77, 255, 0.06); /* เงานูนด้านใน */
+            transform: translateY(-1px); 
+            box-shadow: 0 4px 8px rgba(124, 77, 255, 0.15); 
+            color: #512da8; 
         }
         
         #fileContent { 
             white-space: pre-wrap; 
             word-wrap: break-word; 
             color: #333; 
-            font-size: 1.1rem; /* ขนาดตัวอักษรใหญ่ขึ้นเล็กน้อยเพื่อความสบายตา */
+            font-size: 1.1rem; 
         }
     </style>
 </head>
