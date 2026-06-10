@@ -15,6 +15,22 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/4.1.5/css/flag-icons.min.css">
     
     <style>
+
+
+        /* เพิ่มโค้ดนี้ไว้ท้ายสุดของส่วน <style> ก่อนปิด </style> */
+        @media screen and (max-width: 600px) {
+            body {
+                padding: 15px; /* ลดระยะขอบรอบนอกลงเล็กน้อยบนมือถือ */
+                line-height: 1.5; /* ลดความห่างระหว่างบรรทัดให้พอดี */
+            }
+            .card {
+                padding: 20px; /* ลด Padding ใน Card ให้ประหยัดพื้นที่บนจอมือถือ */
+                margin: 10px auto;
+            }
+            #fileContent {
+                font-size: 1rem; /* ปรับขนาดตัวอักษรบนมือถือให้พอดี */
+            }
+        }
         body { 
             background-color: #f0f2f5; 
             font-family: 'Tahoma', sans-serif; 
